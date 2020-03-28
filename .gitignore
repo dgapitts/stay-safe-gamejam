@@ -105,3 +105,6 @@ dist
 
 # Large files.
 assets/
+
+# Mac OS files
+.DS_Store

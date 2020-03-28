@@ -18,6 +18,24 @@
       width: 100vw;
       height: 100vh;
     }
+    h1 {
+      font-size: 3em;
+      padding-top: 2em;
+    }
+
+    #start {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ffc2d6;
+      text-align: center;
+    }
+    #playButton {
+      font-size: large;
+      cursor: pointer;
+    }
 
     #image {
       background-image: url(placeholder-0.png);
@@ -87,19 +105,35 @@
   </style>
 </head>
 <body>
-  <div id="image"></div>
-  <div id="storyline">
-    <p id="storyline1">Your friends messaged you:</p>
-    <p id="storyline2">"We r all out wanna join?"</p>
+  <div id="game" class="hidden">
+    <div id="image"></div>
+    <div id="storyline">
+      <p id="storyline1">Your friends messaged you:</p>
+      <p id="storyline2">"We r all out wanna join?"</p>
+    </div>
+  
+    <ul id="choices">
+      <li id="answer1" class="hidden"><a href="#maybe" id="choice1" class="choice">Maybe</a></li>
+      <li id="answer2" class="not-hidden"><a href="#yes" id="choice2" class="choice">Yes</a></li>
+      <li id="answer3" class="not-hidden"><a href="#no" id="choice3" class="choice">No</a></li>
+    </ul>
   </div>
 
-  <ul id="choices">
-    <li id="answer1" class="hidden"><a href="#maybe" id="choice1" class="choice">Maybe</a></li>
-    <li id="answer2" class="not-hidden"><a href="#yes" id="choice2" class="choice">Yes</a></li>
-    <li id="answer3" class="not-hidden"><a href="#no" id="choice3" class="choice">No</a></li>
-  </ul>
+  <div id="start" class="not-hidden">
+    <h1>a COVID-19 story</h1>
+    <input type="button" value="PLAY" id="playButton" />
+  </div>
 
+  <script src="howler.core.min.js"></script>
   <script>
+    var playButton = document.querySelector('#playButton');
+
+    playButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#start').className = 'hidden';
+      document.querySelector('#game').className = 'not-hidden';
+    });
+
     var imageUi = document.querySelector('#image');
     var storylineUi = document.querySelector('#storyline');
     var storyline1 = document.querySelector('#storyline1');
@@ -397,6 +431,17 @@
     document.querySelectorAll('.choice').forEach(function(choice) {
       choice.addEventListener('click', makeChoice);
     });
+
+    function startMusic() {
+      var music = new Howl({
+        src: ['covid-19.ogg', 'covid-19.mp3'],
+        loop: true,
+        volume: 0.5,
+      });
+      music.play();
+    }
+
+    window.addEventListener('load', startMusic);
   </script>
 </body>
 </html>
