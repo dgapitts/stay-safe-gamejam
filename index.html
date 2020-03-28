@@ -20,7 +20,7 @@
     }
 
     #image {
-      background-image: url(placeholder-1.png);
+      background-image: url(placeholder-0.png);
       background-attachment: fixed;
       width: 100vw;
       height: 100vh;
@@ -48,7 +48,7 @@
 
     #choices {
       position: absolute;
-      bottom: 2em;
+      bottom: 1em;
       padding: 0;
       margin: 0;
       width: 100%;
@@ -79,6 +79,13 @@
     #choices a:active {
       background-color: #FFD6C2;
     }
+
+    .hidden {
+      visibility: hidden;
+    }
+    .not-hidden {
+      visibility: visible;
+    }
   </style>
 </head>
 <body>
@@ -89,8 +96,9 @@
   </div>
 
   <ul id="choices">
-    <li><a href="#yes" id="choice1" class="choice">Yes</a></li>
-    <li><a href="#no" id="choice2" class="choice">No</a></li>
+    <li id="answer1" class="hidden"><a href="#maybe" id="choice1" class="choice">Maybe</a></li>
+    <li id="answer2" class="not-hidden"><a href="#yes" id="choice2" class="choice">Yes</a></li>
+    <li id="answer3" class="not-hidden"><a href="#no" id="choice3" class="choice">No</a></li>
   </ul>
 
   <script>
@@ -101,50 +109,207 @@
     var choiceUi = document.querySelector('#choices');
     var choice1 = document.querySelector('#choice1');
     var choice2 = document.querySelector('#choice2');
+    var choice3 = document.querySelector('#choice3');
+    var answer1 = document.querySelector('#answer1');
+    var answer2 = document.querySelector('#answer2');
+    var answer3 = document.querySelector('#answer3');
+    var areHandsWashed = false;
 
     function updateUi() {
       var currentStory = story[currentStoryIndex];
       imageUi.style.backgroundImage = 'url(' + currentStory.image + ')';
       storyline1.childNodes[0].nodeValue = currentStory.storyline[0];
       storyline2.childNodes[0].nodeValue = currentStory.storyline[1];
+
       choice1.childNodes[0].nodeValue = currentStory.choices[0];
       choice2.childNodes[0].nodeValue = currentStory.choices[1];
+      choice3.childNodes[0].nodeValue = currentStory.choices[2];
+
+      answer1.className = (currentStory.choices[0]) ? 'not-hidden' : 'hidden';
+      answer2.className = (currentStory.choices[1]) ? 'not-hidden' : 'hidden';
+      answer3.className = (currentStory.choices[2]) ? 'not-hidden' : 'hidden';
     };
 
     var currentStoryIndex = 0;
     var story = [
       {
         index: 0,
-        image: 'placeholder-1.png',
+        image: 'placeholder-0.png',
         storyline: [
           'Your friends messaged you:',
           'We r out wanna join?',
         ],
         choices: [
+          '',
           'Yes',
           'No',
         ],
       },
       {
         index: 1,
-        image: 'placeholder-2.png',
+        image: 'placeholder-1.png',
         storyline: [
           'Playground was fun!',
           'Go to the store?',
         ],
         choices: [
+          '',
           'Yes',
           'No',
         ],
       },
       {
         index: 2,
-        image: 'placeholder-3.png',
+        image: 'placeholder-2.png',
         storyline: [
           'Fun time with your sibblings!',
           'Go to the store?',
         ],
         choices: [
+          '',
+          'Yes',
+          'No',
+        ],
+      },
+      {
+        index: 3,
+        image: 'placeholder-3.png',
+        storyline: [
+          'The store is packed.',
+          'What should you buy?',
+        ],
+        choices: [
+          'Toilet paper',
+          'Soap',
+          'Snacks',
+        ],
+      },
+      {
+        index: 4,
+        image: 'placeholder-4.png',
+        storyline: [
+          'You get the last roll.',
+          'Grandparents phone: help us cook dinner?',
+        ],
+        choices: [
+          '',
+          'Yes',
+          'No',
+        ],
+      },
+      {
+        index: 5,
+        image: 'placeholder-5.png',
+        storyline: [
+          'You got a bottle of soap',
+          'Grandparents phone: help us cook dinner?',
+        ],
+        choices: [
+          '',
+          'Yes',
+          'No',
+        ],
+      },
+      {
+        index: 6,
+        image: 'placeholder-6.png',
+        storyline: [
+          'You brought snacks home',
+          'Grandparents phone: help us cook dinner?',
+        ],
+        choices: [
+          '',
+          'Yes',
+          'No',
+        ],
+      },
+      {
+        index: 7,
+        image: 'placeholder-7.png',
+        storyline: [
+          'At your grandparents:',
+          'Wash your hands first?',
+        ],
+        choices: [
+          '',
+          'Yes',
+          'No',
+        ],
+      },
+      {
+        index: 8,
+        image: 'placeholder-8.png',
+        storyline: [
+          'The meal at your grandparents is very nice.',
+          'The whole family has a great time.',
+        ],
+        choices: [
+          '',
+          '',
+          'Next day',
+        ],
+      },
+      {
+        index: 9,
+        image: 'placeholder-9.png',
+        storyline: [
+          'Well done, you are a good kid.',
+          'Times are tough but you know what to do.',
+        ],
+        choices: [
+          '',
+          '',
+          'Restart the story',
+        ],
+      },
+      {
+        index: 10,
+        image: 'placeholder-10.png',
+        storyline: [
+          'Grandparents are sick.',
+          'Will you get medicine?',
+        ],
+        choices: [
+          '',
+          'Yes',
+          'No',
+        ],
+      },
+      {
+        index: 11,
+        image: 'placeholder-11.png',
+        storyline: [
+          'There is no medicine left.',
+          'You should have washed your hands.',
+        ],
+        choices: [
+          '',
+          '',
+          'Restart the story',
+        ],
+      },
+      {
+        index: 12,
+        image: 'placeholder-12.png',
+        storyline: [
+          'We can all help each other.',
+          'Remember to wash your hands.',
+        ],
+        choices: [
+          '',
+          '',
+          'Restart the story',
+        ],
+      },
+      {
+        index: 13,
+        image: 'placeholder-13.png',
+        storyline: [
+          'You play video games',
+          'Grandparents phone: help us cook dinner?',
+        ],
+        choices: [
+          '',
           'Yes',
           'No',
         ],
@@ -157,13 +322,78 @@
       
       if (currentStoryIndex === 0 && selectedChoice === 'Yes') {
         currentStoryIndex = 1;
+        updateUi();
+        return;
       }
       if (currentStoryIndex === 0 && selectedChoice === 'No') {
         currentStoryIndex = 2;
+        updateUi();
+        return;
       }
-      
-
-      updateUi();
+      if ((currentStoryIndex === 1 || currentStoryIndex === 2) && selectedChoice === 'Yes') {
+        currentStoryIndex = 3;
+        updateUi();
+        return;
+      }
+      if ((currentStoryIndex === 1 || currentStoryIndex === 2) && selectedChoice === 'No') {
+        currentStoryIndex = 13;
+        updateUi();
+        return;
+      }
+      if (currentStoryIndex === 3 && selectedChoice === 'Toilet paper') {
+        currentStoryIndex = 4;
+        updateUi();
+        return;
+      }
+      if (currentStoryIndex === 3 && selectedChoice === 'Soap') {
+        currentStoryIndex = 5;
+        updateUi();
+        return;
+      }
+      if (currentStoryIndex === 3 && selectedChoice === 'Snacks') {
+        currentStoryIndex = 6;
+        updateUi();
+        return;
+      }
+      if (currentStoryIndex === 4 || currentStoryIndex === 5 || currentStoryIndex === 6 || currentStoryIndex === 13) {
+        currentStoryIndex = 7;
+        updateUi();
+        return;
+      }
+      if (currentStoryIndex === 7 && selectedChoice === 'Yes') {
+        areHandsWashed = true;
+      }
+      if (currentStoryIndex === 7) {
+        currentStoryIndex = 8;
+        updateUi();
+        return;
+      }
+      if (currentStoryIndex === 8 && areHandsWashed) {
+        currentStoryIndex = 9;
+        updateUi();
+        return;
+      }
+      if (currentStoryIndex === 8 && !areHandsWashed) {
+        currentStoryIndex = 10;
+        updateUi();
+        return;
+      }
+      if (currentStoryIndex === 10 && selectedChoice === 'Yes') {
+        currentStoryIndex = 11;
+        updateUi();
+        return;
+      }
+      if (currentStoryIndex === 10 && selectedChoice === 'No') {
+        currentStoryIndex = 12;
+        updateUi();
+        return;
+      }
+      if (currentStoryIndex === 9 || currentStoryIndex === 11 || currentStoryIndex === 12) {
+        areHandsWashed = false;
+        currentStoryIndex = 0;
+        updateUi();
+        return;
+      }
     }
 
     document.querySelectorAll('.choice').forEach(function(choice) {
