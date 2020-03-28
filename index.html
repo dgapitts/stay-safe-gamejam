@@ -6,8 +6,71 @@
   <title>Stay Safe game jam</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <style>
+    body {
+      background-color: #ffc2d6;
+      color: #CC9BAB;
+      font-size: 16px;
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #storyline {
+      background-color: rgba(255,255,255, .1);
+      padding: 1em;
+      font-weight: bold;
+      text-align: right;
+    }
+    #storyline p {
+      font-size: 2em;
+      margin: 0 0 .25em;
+      line-height: 1.25em;
+    }
+
+    #choices {
+      position: absolute;
+      bottom: 2em;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    #choices li {
+      margin: 0 0 1em;
+      list-style: none;
+      text-align: center;
+      background-color: rgba(255,255,255, .5);
+    }
+    #choices a {
+      line-height: 1.5em;
+      font-weight: bold;
+      text-decoration: none;
+      color: #CC9BAB;
+      display: block;
+      font-size: 2em;
+      transition: all .5s linear;
+    }
+    #choices a:hover {
+      background-color: #fff;
+    }
+    #choices a:active {
+      background-color: #FFD6C2;
+    }
+  </style>
 </head>
 <body>
-  
+  <div id="image"></div>
+  <div id="storyline">
+    <p>Your friends messaged you:</p>
+    <p>"We r all out wanna join?"</p>
+  </div>
+
+  <ul id="choices">
+    <li><a href="#yes">Yes</a></li>
+    <li><a href="#no">No</a></li>
+  </ul>
 </body>
 </html>
