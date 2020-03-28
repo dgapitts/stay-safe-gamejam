@@ -121,15 +121,17 @@
 
   <div id="start" class="not-hidden">
     <h1>a COVID-19 story</h1>
-    <input type="button" value="PLAY" id="playButton" />
+    <input type="button" value="PLAY" id="playButton" disabled />
   </div>
 
   <script src="howler.core.min.js"></script>
   <script>
     var playButton = document.querySelector('#playButton');
+    var music;
 
     playButton.addEventListener('click', function(e) {
       e.preventDefault();
+      music.play();
       document.querySelector('#start').className = 'hidden';
       document.querySelector('#game').className = 'not-hidden';
     });
@@ -432,16 +434,16 @@
       choice.addEventListener('click', makeChoice);
     });
 
-    function startMusic() {
-      var music = new Howl({
+    function enableGame() {
+      music = new Howl({
         src: ['covid-19.ogg', 'covid-19.mp3'],
         loop: true,
         volume: 0.5,
       });
-      music.play();
+      playButton.removeAttribute('disabled');
     }
 
-    window.addEventListener('load', startMusic);
+    window.addEventListener('load', enableGame);
   </script>
 </body>
 </html>
