@@ -38,6 +38,7 @@
       top: 0;
       left: 0;
       right: 0;
+      transition: all .5s linear;
     }
     #storyline p {
       font-size: 2em;
@@ -69,6 +70,8 @@
       -moz-box-shadow: 0 0 43px -9px rgba(130, 99, 110, 1);
       box-shadow: 0 0 43px -9px rgba(130, 99, 110, 1);
       transition: all .5s linear;
+      border-bottom: solid 1px;
+      border-top: solid 1px;
     }
     #choices a:hover {
       background-color: #fff;
@@ -81,13 +84,91 @@
 <body>
   <div id="image"></div>
   <div id="storyline">
-    <p>Your friends messaged you:</p>
-    <p>"We r all out wanna join?"</p>
+    <p id="storyline1">Your friends messaged you:</p>
+    <p id="storyline2">"We r all out wanna join?"</p>
   </div>
 
   <ul id="choices">
-    <li><a href="#yes">Yes</a></li>
-    <li><a href="#no">No</a></li>
+    <li><a href="#yes" id="choice1" class="choice">Yes</a></li>
+    <li><a href="#no" id="choice2" class="choice">No</a></li>
   </ul>
+
+  <script>
+    var imageUi = document.querySelector('#image');
+    var storylineUi = document.querySelector('#storyline');
+    var storyline1 = document.querySelector('#storyline1');
+    var storyline2 = document.querySelector('#storyline2');
+    var choiceUi = document.querySelector('#choices');
+    var choice1 = document.querySelector('#choice1');
+    var choice2 = document.querySelector('#choice2');
+
+    function updateUi() {
+      var currentStory = story[currentStoryIndex];
+      imageUi.style.backgroundImage = 'url(' + currentStory.image + ')';
+      storyline1.childNodes[0].nodeValue = currentStory.storyline[0];
+      storyline2.childNodes[0].nodeValue = currentStory.storyline[1];
+      choice1.childNodes[0].nodeValue = currentStory.choices[0];
+      choice2.childNodes[0].nodeValue = currentStory.choices[1];
+    };
+
+    var currentStoryIndex = 0;
+    var story = [
+      {
+        index: 0,
+        image: 'placeholder-1.png',
+        storyline: [
+          'Your friends messaged you:',
+          'We r out wanna join?',
+        ],
+        choices: [
+          'Yes',
+          'No',
+        ],
+      },
+      {
+        index: 1,
+        image: 'placeholder-2.png',
+        storyline: [
+          'Playground was fun!',
+          'Go to the store?',
+        ],
+        choices: [
+          'Yes',
+          'No',
+        ],
+      },
+      {
+        index: 2,
+        image: 'placeholder-3.png',
+        storyline: [
+          'Fun time with your sibblings!',
+          'Go to the store?',
+        ],
+        choices: [
+          'Yes',
+          'No',
+        ],
+      },
+    ];
+
+    function makeChoice(e) {
+      e.preventDefault();
+      var selectedChoice = e.currentTarget.childNodes[0].nodeValue;
+      
+      if (currentStoryIndex === 0 && selectedChoice === 'Yes') {
+        currentStoryIndex = 1;
+      }
+      if (currentStoryIndex === 0 && selectedChoice === 'No') {
+        currentStoryIndex = 2;
+      }
+      
+
+      updateUi();
+    }
+
+    document.querySelectorAll('.choice').forEach(function(choice) {
+      choice.addEventListener('click', makeChoice);
+    });
+  </script>
 </body>
 </html>
