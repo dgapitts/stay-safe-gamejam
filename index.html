@@ -320,7 +320,7 @@
       },
       {
         index: 11,
-        image: '11.png',
+        image: '10.png',
         storyline: [
           'There is no medicine left.',
           'You should have washed your hands.',
@@ -333,7 +333,7 @@
       },
       {
         index: 12,
-        image: '12.png',
+        image: '10.png',
         storyline: [
           'We can all help each other.',
           'Remember to wash your hands.',
@@ -346,7 +346,7 @@
       },
       {
         index: 13,
-        image: '13.png',
+        image: '2.png',
         storyline: [
           'You play video games',
           'Grandparents phone: help us cook dinner?',
@@ -367,14 +367,12 @@
         currentStoryIndex = 1;
         updateUi();
         preloadImage('3.png');
-        preloadImage('13.png');
         return;
       }
       if (currentStoryIndex === 0 && selectedChoice === 'No') {
         currentStoryIndex = 2;
         updateUi();
         preloadImage('3.png');
-        preloadImage('13.png');
         return;
       }
       if ((currentStoryIndex === 1 || currentStoryIndex === 2) && selectedChoice === 'Yes') {
@@ -392,8 +390,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Toilet paper') {
@@ -403,8 +399,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Soap') {
@@ -414,8 +408,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Snacks') {
@@ -425,8 +417,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 4 || currentStoryIndex === 5 || currentStoryIndex === 6 || currentStoryIndex === 13) {
@@ -436,8 +426,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 7 && selectedChoice === 'Yes') {
@@ -450,8 +438,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 8 && areHandsWashed) {
@@ -461,8 +447,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 8 && !areHandsWashed) {
@@ -472,8 +456,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 10 && selectedChoice === 'Yes') {
@@ -483,8 +465,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 10 && selectedChoice === 'No') {
@@ -494,8 +474,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 9 || currentStoryIndex === 11 || currentStoryIndex === 12) {
@@ -506,8 +484,6 @@
         preloadImage('8.png');
         preloadImage('9.png');
         preloadImage('10.png');
-        preloadImage('11.png');
-        preloadImage('12.png');
         return;
       }
     }
