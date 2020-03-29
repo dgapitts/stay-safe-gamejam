@@ -206,7 +206,7 @@
         index: 2,
         image: '2.png',
         storyline: [
-          'Fun time with your sibblings!',
+          'Fun time with your siblings!',
           'Go to the store?',
         ],
         choices: [
@@ -321,7 +321,7 @@
       },
       {
         index: 11,
-        image: '10.png',
+        image: '11.png',
         storyline: [
           'There is no medicine left.',
           'You should have washed your hands.',
@@ -360,6 +360,14 @@
       },
     ];
 
+    function getRestOfImages() {
+      preloadImage('7.png');
+      preloadImage('8.png');
+      preloadImage('9.png');
+      preloadImage('10.png');
+      preloadImage('11.png');
+    }
+
     function makeChoice(e) {
       e.preventDefault();
       var selectedChoice = e.currentTarget.childNodes[0].nodeValue;
@@ -387,46 +395,31 @@
       if ((currentStoryIndex === 1 || currentStoryIndex === 2) && selectedChoice === 'No') {
         currentStoryIndex = 13;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Toilet paper') {
         currentStoryIndex = 4;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Soap') {
         currentStoryIndex = 5;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Snacks') {
         currentStoryIndex = 6;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
       if (currentStoryIndex === 4 || currentStoryIndex === 5 || currentStoryIndex === 6 || currentStoryIndex === 13) {
         currentStoryIndex = 7;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
       if (currentStoryIndex === 7 && selectedChoice === 'Yes') {
@@ -435,56 +428,38 @@
       if (currentStoryIndex === 7) {
         currentStoryIndex = 8;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
       if (currentStoryIndex === 8 && areHandsWashed) {
         currentStoryIndex = 9;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
       if (currentStoryIndex === 8 && !areHandsWashed) {
         currentStoryIndex = 10;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
       if (currentStoryIndex === 10 && selectedChoice === 'Yes') {
         currentStoryIndex = 11;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
       if (currentStoryIndex === 10 && selectedChoice === 'No') {
         currentStoryIndex = 12;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
       if (currentStoryIndex === 9 || currentStoryIndex === 11 || currentStoryIndex === 12) {
         areHandsWashed = false;
         currentStoryIndex = 0;
         updateUi();
-        preloadImage('7.png');
-        preloadImage('8.png');
-        preloadImage('9.png');
-        preloadImage('10.png');
+        getRestOfImages();
         return;
       }
     }
