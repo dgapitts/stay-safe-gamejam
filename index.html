@@ -149,6 +149,14 @@
     var answer3 = document.querySelector('#answer3');
     var areHandsWashed = false;
 
+    function preloadImage(url) {
+        var img = new Image();
+        img.src = url;
+    }
+
+    preloadImage('1.png');
+    preloadImage('2.png');
+
     function updateUi() {
       var currentStory = story[currentStoryIndex];
       imageUi.style.backgroundImage = 'url(' + currentStory.image + ')';
@@ -357,41 +365,78 @@
       if (currentStoryIndex === 0 && selectedChoice === 'Yes') {
         currentStoryIndex = 1;
         updateUi();
+        preloadImage('3.png');
+        preloadImage('13.png');
         return;
       }
       if (currentStoryIndex === 0 && selectedChoice === 'No') {
         currentStoryIndex = 2;
         updateUi();
+        preloadImage('3.png');
+        preloadImage('13.png');
         return;
       }
       if ((currentStoryIndex === 1 || currentStoryIndex === 2) && selectedChoice === 'Yes') {
         currentStoryIndex = 3;
         updateUi();
+        preloadImage('4.png');
+        preloadImage('5.png');
+        preloadImage('6.png');
         return;
       }
       if ((currentStoryIndex === 1 || currentStoryIndex === 2) && selectedChoice === 'No') {
         currentStoryIndex = 13;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Toilet paper') {
         currentStoryIndex = 4;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Soap') {
         currentStoryIndex = 5;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Snacks') {
         currentStoryIndex = 6;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 4 || currentStoryIndex === 5 || currentStoryIndex === 6 || currentStoryIndex === 13) {
         currentStoryIndex = 7;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 7 && selectedChoice === 'Yes') {
@@ -400,32 +445,68 @@
       if (currentStoryIndex === 7) {
         currentStoryIndex = 8;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 8 && areHandsWashed) {
         currentStoryIndex = 9;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 8 && !areHandsWashed) {
         currentStoryIndex = 10;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 10 && selectedChoice === 'Yes') {
         currentStoryIndex = 11;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 10 && selectedChoice === 'No') {
         currentStoryIndex = 12;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
       if (currentStoryIndex === 9 || currentStoryIndex === 11 || currentStoryIndex === 12) {
         areHandsWashed = false;
         currentStoryIndex = 0;
         updateUi();
+        preloadImage('7.png');
+        preloadImage('8.png');
+        preloadImage('9.png');
+        preloadImage('10.png');
+        preloadImage('11.png');
+        preloadImage('12.png');
         return;
       }
     }
