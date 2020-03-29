@@ -129,11 +129,83 @@
   <script src="howler.core.min.js"></script>
   <script>
     var playButton = document.querySelector('#playButton');
-    var music;
+    var music = new Howl({
+      src: ['covid-19.ogg', 'covid-19.mp3'],
+      loop: true,
+      volume: 0.5,
+    });
+
+    var voiceover = new Howl({
+      src: ['voiceover.ogg', 'voiceover.mp3'],
+      volume: 1,
+      sprite: {
+        "0": [
+          0,
+          4374.988662131519
+        ],
+        "1": [
+          6000,
+          3500
+        ],
+        "2": [
+          39000,
+          3250
+        ],
+        "3": [
+          44000,
+          3250
+        ],
+        "4": [
+          49000,
+          4625.011337868479
+        ],
+        "5": [
+          55000,
+          4750
+        ],
+        "6": [
+          61000,
+          4500
+        ],
+        "7": [
+          67000,
+          3500
+        ],
+        "8": [
+          72000,
+          4500
+        ],
+        "9": [
+          78000,
+          4874.9886621315145
+        ],
+        "10": [
+          11000,
+          3125.0113378684805
+        ],
+        "11": [
+          16000,
+          4250
+        ],
+        "12": [
+          22000,
+          3750
+        ],
+        "13": [
+          27000,
+          5250
+        ],
+        "14": [
+          34000,
+          3500
+        ]
+      }
+    });
 
     playButton.addEventListener('click', function(e) {
       e.preventDefault();
       music.play();
+      voiceover.play('0');
       document.querySelector('#start').className = 'hidden';
       document.querySelector('#game').className = 'not-hidden';
     });
@@ -350,7 +422,7 @@
         image: '2.png',
         storyline: [
           'You play video games',
-          'Grandparents phone: help us cook dinner?',
+          'Your grandparents called. They invited you to dinner.',
         ],
         choices: [
           '',
@@ -373,19 +445,25 @@
       var selectedChoice = e.currentTarget.childNodes[0].nodeValue;
       
       if (currentStoryIndex === 0 && selectedChoice === 'Yes') {
+        voiceover.stop();
         currentStoryIndex = 1;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         preloadImage('3.png');
         return;
       }
       if (currentStoryIndex === 0 && selectedChoice === 'No') {
+        voiceover.stop();
         currentStoryIndex = 2;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         preloadImage('3.png');
         return;
       }
       if ((currentStoryIndex === 1 || currentStoryIndex === 2) && selectedChoice === 'Yes') {
+        voiceover.stop();
         currentStoryIndex = 3;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         preloadImage('4.png');
         preloadImage('5.png');
@@ -393,31 +471,41 @@
         return;
       }
       if ((currentStoryIndex === 1 || currentStoryIndex === 2) && selectedChoice === 'No') {
+        voiceover.stop();
         currentStoryIndex = 13;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Toilet paper') {
+        voiceover.stop();
         currentStoryIndex = 4;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Soap') {
+        voiceover.stop();
         currentStoryIndex = 5;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
       }
       if (currentStoryIndex === 3 && selectedChoice === 'Snacks') {
+        voiceover.stop();
         currentStoryIndex = 6;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
       }
       if (currentStoryIndex === 4 || currentStoryIndex === 5 || currentStoryIndex === 6 || currentStoryIndex === 13) {
+        voiceover.stop();
         currentStoryIndex = 7;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
@@ -426,38 +514,50 @@
         areHandsWashed = true;
       }
       if (currentStoryIndex === 7) {
+        voiceover.stop();
         currentStoryIndex = 8;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
       }
       if (currentStoryIndex === 8 && areHandsWashed) {
+        voiceover.stop();
         currentStoryIndex = 9;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
       }
       if (currentStoryIndex === 8 && !areHandsWashed) {
+        voiceover.stop();
         currentStoryIndex = 10;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
       }
       if (currentStoryIndex === 10 && selectedChoice === 'Yes') {
+        voiceover.stop();
         currentStoryIndex = 11;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
       }
       if (currentStoryIndex === 10 && selectedChoice === 'No') {
+        voiceover.stop();
         currentStoryIndex = 12;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
       }
       if (currentStoryIndex === 9 || currentStoryIndex === 11 || currentStoryIndex === 12) {
         areHandsWashed = false;
+        voiceover.stop();
         currentStoryIndex = 0;
+        voiceover.play(String(currentStoryIndex));
         updateUi();
         getRestOfImages();
         return;
@@ -469,11 +569,6 @@
     });
 
     function enableGame() {
-      music = new Howl({
-        src: ['covid-19.ogg', 'covid-19.mp3'],
-        loop: true,
-        volume: 0.5,
-      });
       playButton.removeAttribute('disabled');
     }
 

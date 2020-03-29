@@ -105,6 +105,7 @@ dist
 
 # Large files.
 assets/
+voiceover/
 
 # Mac OS files
 .DS_Store
